@@ -43,6 +43,44 @@ class Articulo():
       return record[field]
     return ''
   
+
+  def establece_campos_opcionales(self, record):
+    self.driver.find_element(By.ID, "doiTextId").send_keys(self.getOptionalField(record,'doi'))
+    self.driver.find_element(By.ID, "pagDesdeTextId").send_keys(self.getPagDesde(record))
+    self.driver.find_element(By.ID, "pagHastaTextId").send_keys(self.getPagHasta(record))
+    self.driver.find_element(By.ID, "editorialTextId").send_keys(self.getOptionalField(record,'publisher'))
+    self.driver.find_element(By.ID, "issnTextId").send_keys(self.getOptionalField(record,'issn'))
+
+    # Campos bibliométricos
+    self.driver.find_element(By.ID, "baseDatosTextId").send_keys(self.getOptionalField(record,'metricsdb'))
+    self.driver.find_element(By.ID, "posRevistaTextId").send_keys(self.getOptionalField(record,'posincat'))
+    self.driver.find_element(By.ID, "posRevistaMaxTextId").send_keys(self.getOptionalField(record,'maxincat'))
+    self.driver.find_element(By.ID, "categoriaTextId").send_keys(self.getOptionalField(record,'category'))
+    self.driver.find_element(By.ID, "annioCalidadTextId").send_keys(self.getOptionalField(record,'yearmetrics'))
+    self.driver.find_element(By.ID, "citasJcrTextId").send_keys(self.getOptionalField(record,'jcrcites'))
+    self.driver.find_element(By.ID, "citasTotalTextId").send_keys(self.getOptionalField(record,'totalcites'))
+    self.driver.find_element(By.ID, "otrosIndiciosTextAreaId").send_keys(self.getOptionalField(record,'qualityevidences'))
+
+    tercile=self.getOptionalField(record,'tercile')
+    if tercile.startswith('T'):
+      tercile = tercile[1:]
+      
+    if tercile in ['1', '2', '3']:
+      self.driver.find_element(By.CSS_SELECTOR, "#tercilLabelId + div input").send_keys(tercile)
+      time.sleep(0.5)
+      self.driver.find_element(By.CSS_SELECTOR, "#tercilLabelId + div input").send_keys(Keys.ENTER)
+      time.sleep(0.5)
+
+    quartile = self.getOptionalField(record,'quartile')
+    if quartile.startswith('Q'):
+      quartile = quartile[1:]
+
+    if quartile in ['1', '2', '3', '4']:
+      dropdown = self.driver.find_element(By.CSS_SELECTOR, "#cuartilComboId")    
+      dropdown.find_element(By.XPATH, f'//option[. = "{self.getOptionalField(record,'quartile')}"]').click()
+
+
+
   def aniade_articulo(self, record, pos):
     # 4 | waitForElementPresent | css=#nuevaPublicacionIdxId | 30000
     WebDriverWait(self.driver, 60).until(expected_conditions.presence_of_element_located((By.CSS_SELECTOR, "#nuevaPublicacionIdxId")))
@@ -63,17 +101,12 @@ class Articulo():
     #time.sleep(1)
     # 13 | type | css=#claveLabelid + div input | Artículo
     self.driver.find_element(By.CSS_SELECTOR, "#claveLabelid + div input").send_keys("Artículo")
-    time.sleep(1)
+    time.sleep(0.5)
     # 14 | sendKeys | css=#claveLabelid + div input | ${KEY_ENTER}
     self.driver.find_element(By.CSS_SELECTOR, "#claveLabelid + div input").send_keys(Keys.ENTER)
-    time.sleep(1)
+    time.sleep(0.5)
     # 15 | type | id=tituloTextId | Hola
     self.driver.find_element(By.ID, "tituloTextId").send_keys(record['plain_title'])
-    self.driver.find_element(By.ID, "doiTextId").send_keys(self.getOptionalField(record,'doi'))
-    self.driver.find_element(By.ID, "pagDesdeTextId").send_keys(self.getPagDesde(record))
-    self.driver.find_element(By.ID, "pagHastaTextId").send_keys(self.getPagHasta(record))
-    self.driver.find_element(By.ID, "editorialTextId").send_keys(self.getOptionalField(record,'publisher'))
-    self.driver.find_element(By.ID, "issnTextId").send_keys(self.getOptionalField(record,'issn'))
     #time.sleep(1)
     # 16 | type | id=nombreRevistaTextId | Expoert
     self.driver.find_element(By.ID, "nombreRevistaTextId").send_keys(record['plain_journal'])
@@ -83,6 +116,7 @@ class Articulo():
     #time.sleep(1)
     # 18 | type | id=annioPublicacionTextId | 2020
     self.driver.find_element(By.ID, "annioPublicacionTextId").send_keys(record['year'])
+    self.establece_campos_opcionales(record)
     #time.sleep(1)
     # 19 | click | id=saveBtn | 
     self.driver.find_element(By.ID, "saveBtn").click()
