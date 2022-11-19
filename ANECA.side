@@ -1,0 +1,153 @@
+{
+  "id": "fd108d95-9dc1-493b-87c0-9bdb13effae3",
+  "version": "2.0",
+  "name": "ANECA",
+  "url": "https://srv.aneca.es",
+  "tests": [{
+    "id": "dba82ab7-c82f-4240-8149-cf40557b3742",
+    "name": "Untitled",
+    "commands": [{
+      "id": "e5e426b0-5d06-4da5-82d9-d96fea1a98e4",
+      "comment": "",
+      "command": "open",
+      "target": "/Academia3/solicitudes",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "10f2741b-cb96-4fd6-852d-9f35e0f0a8d3",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1200x831",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "0258bdee-eec4-456a-a16f-cae85e338e5f",
+      "comment": "",
+      "command": "//click",
+      "target": "css=.textAlignCenter",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c617b28f-3c48-43d0-87ad-0d15afda21e5",
+      "comment": "",
+      "command": "//click",
+      "target": "id=login_texto_entrar",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "19418ff1-28e3-43f3-b62e-a82af25ebcfe",
+      "comment": "",
+      "command": "//click",
+      "target": "css=.izq:nth-child(1) .txt_readmore",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "3af97da1-e666-4cda-82bc-98c516c331d8",
+      "comment": "",
+      "command": "//click",
+      "target": "id=listaConvocatoriaForm1",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "786140aa-3be6-4503-8a97-fad6d6ea9285",
+      "comment": "",
+      "command": "//click",
+      "target": "css=.external-hwndTramite > input:nth-child(4)",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "57baf0c4-8be3-4acd-95ee-e48af1ff325e",
+      "comment": "",
+      "command": "//click",
+      "target": "linkText=Calidad y difusión de los resultados de la actividad investigadora",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "33a9bb83-8e31-4db1-9f31-9003948202e3",
+      "comment": "",
+      "command": "//click",
+      "target": "css=#nuevaPublicacionIdxId > label",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "26d9903e-aa26-4d4a-9223-158ca62e66a6",
+      "comment": "",
+      "command": "type",
+      "target": "id=autoresFilter",
+      "targets": [
+        ["id=autoresFilter", "id"],
+        ["css=#autoresFilter", "css:finder"],
+        ["xpath=//input[@id='autoresFilter']", "xpath:attributes"],
+        ["xpath=//form[@id='formModalData']/fieldset/div/div/input", "xpath:idRelative"],
+        ["xpath=//fieldset/div/div/input", "xpath:position"]
+      ],
+      "value": "Christian Cintrano\\n"
+    }, {
+      "id": "45862244-d4c7-42e9-9188-133956bf1aef",
+      "comment": "",
+      "command": "type",
+      "target": "id=autoresFilter",
+      "targets": [],
+      "value": "Francisco Chicano\\n"
+    }, {
+      "id": "b246185a-aa78-481a-bf9d-98a37f662797",
+      "comment": "",
+      "command": "type",
+      "target": "id=posicionSolicitanteTextId",
+      "targets": [],
+      "value": "2"
+    }, {
+      "id": "b008e643-2217-4c82-996e-3df86213d067",
+      "comment": "",
+      "command": "type",
+      "target": "id=claveComboId",
+      "targets": [],
+      "value": "Artículo\\n"
+    }, {
+      "id": "654b2fcd-5801-40b9-9614-f5fa6a7c4247",
+      "comment": "",
+      "command": "type",
+      "target": "id=tituloTextId",
+      "targets": [],
+      "value": "Bla"
+    }, {
+      "id": "d3db1e1b-6e26-410a-85fc-13c1a3adb2f6",
+      "comment": "",
+      "command": "type",
+      "target": "id=nombreRevistaTextId",
+      "targets": [],
+      "value": "Experts"
+    }, {
+      "id": "86439f12-a24a-4c52-927b-673cb29e1232",
+      "comment": "",
+      "command": "type",
+      "target": "id=volumenTextId",
+      "targets": [],
+      "value": "161"
+    }, {
+      "id": "6bdaf120-f9b9-4329-b023-8403169b917f",
+      "comment": "",
+      "command": "type",
+      "target": "id=annioPublicacionTextId",
+      "targets": [],
+      "value": "2020"
+    }, {
+      "id": "ecdbd5a7-6b7f-444d-9148-f61ef63f2230",
+      "comment": "",
+      "command": "click",
+      "target": "id=saveBtn",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "f60bf413-535c-4a6b-b879-54687516bef3",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["dba82ab7-c82f-4240-8149-cf40557b3742"]
+  }],
+  "urls": ["https://srv.aneca.es/Academia3/actInvestigadora/calidadDifusion?_HDIV_STATE_=13-4-39840D13484730901863128BA0D4E967", "https://srv.aneca.es/Academia3/actInvestigadora/calidadDifusion", "https://srv.aneca.es/"],
+  "plugins": []
+}

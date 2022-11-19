@@ -1,0 +1,240 @@
+{
+  "id": "c779e2bf-8c39-4ece-8e50-82abd06cd1c9",
+  "version": "2.0",
+  "name": "Academia3",
+  "url": "https://srv.aneca.es",
+  "tests": [{
+    "id": "4798893f-8b25-4c52-9c99-4fe142d01d37",
+    "name": "articulo",
+    "commands": [{
+      "id": "69810017-85ac-437e-b607-ab3c77689e41",
+      "comment": "",
+      "command": "open",
+      "target": "/Academia3/solicitudes",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "23659d37-f138-492a-824e-4c079d2d8ee0",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1200x831",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "7696e8bf-0b1c-4bd8-808c-13caa0e9ba4e",
+      "comment": "",
+      "command": "//click",
+      "target": "linkText=Calidad y difusión de los resultados de la actividad investigadora",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ae140aee-0858-4c77-8e13-d09a1095f8d4",
+      "comment": "",
+      "command": "waitForElementPresent",
+      "target": "css=#nuevaPublicacionIdxId",
+      "targets": [],
+      "value": "30000"
+    }, {
+      "id": "20797bf2-0f77-4642-8a08-9173024f37a9",
+      "comment": "",
+      "command": "click",
+      "target": "css=#nuevaPublicacionIdxId > label",
+      "targets": [
+        ["css=#nuevaPublicacionIdxId > label", "css:finder"],
+        ["xpath=//a[@id='nuevaPublicacionIdxId']/label", "xpath:idRelative"],
+        ["xpath=//div/div/ul/li/a/label", "xpath:position"],
+        ["xpath=//label[contains(.,'Nuevo')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "436737fa-03ea-4726-8ba0-9b3585ab3289",
+      "comment": "",
+      "command": "type",
+      "target": "id=autoresFilter",
+      "targets": [
+        ["id=autoresFilter", "id"],
+        ["css=#autoresFilter", "css:finder"],
+        ["xpath=//input[@id='autoresFilter']", "xpath:attributes"],
+        ["xpath=//form[@id='formModalData']/fieldset/div/div/input", "xpath:idRelative"],
+        ["xpath=//fieldset/div/div/input", "xpath:position"]
+      ],
+      "value": "Chrisitan"
+    }, {
+      "id": "7a23a5c8-6bb4-479a-b054-a6935949a7c5",
+      "comment": "",
+      "command": "sendKeys",
+      "target": "id=autoresFilter",
+      "targets": [
+        ["id=autoresFilter", "id"],
+        ["css=#autoresFilter", "css:finder"],
+        ["xpath=//input[@id='autoresFilter']", "xpath:attributes"],
+        ["xpath=//form[@id='formModalData']/fieldset/div/div/input", "xpath:idRelative"],
+        ["xpath=//fieldset/div/div/input", "xpath:position"]
+      ],
+      "value": "${KEY_ENTER}"
+    }, {
+      "id": "c0d7c09a-14a6-489d-b2c8-77bcc102ce63",
+      "comment": "",
+      "command": "type",
+      "target": "id=autoresFilter",
+      "targets": [
+        ["id=autoresFilter", "id"],
+        ["css=#autoresFilter", "css:finder"],
+        ["xpath=//input[@id='autoresFilter']", "xpath:attributes"],
+        ["xpath=//form[@id='formModalData']/fieldset/div/div/input", "xpath:idRelative"],
+        ["xpath=//fieldset/div/div/input", "xpath:position"]
+      ],
+      "value": "Cintrano"
+    }, {
+      "id": "61094ccd-03f6-4fe0-b4ff-87e4192fd1a5",
+      "comment": "",
+      "command": "sendKeys",
+      "target": "id=autoresFilter",
+      "targets": [
+        ["id=autoresFilter", "id"],
+        ["css=#autoresFilter", "css:finder"],
+        ["xpath=//input[@id='autoresFilter']", "xpath:attributes"],
+        ["xpath=//form[@id='formModalData']/fieldset/div/div/input", "xpath:idRelative"],
+        ["xpath=//fieldset/div/div/input", "xpath:position"]
+      ],
+      "value": "${KEY_ENTER}"
+    }, {
+      "id": "385ca7d0-4cd0-428d-a8b4-cc75ef266bea",
+      "comment": "",
+      "command": "type",
+      "target": "id=autoresFilter",
+      "targets": [
+        ["id=autoresFilter", "id"],
+        ["css=#autoresFilter", "css:finder"],
+        ["xpath=//input[@id='autoresFilter']", "xpath:attributes"],
+        ["xpath=//form[@id='formModalData']/fieldset/div/div/input", "xpath:idRelative"],
+        ["xpath=//fieldset/div/div/input", "xpath:position"]
+      ],
+      "value": "Francisco Chicano"
+    }, {
+      "id": "8e7defa0-15b2-4d19-a460-47a3f6e66602",
+      "comment": "",
+      "command": "sendKeys",
+      "target": "id=autoresFilter",
+      "targets": [
+        ["id=autoresFilter", "id"],
+        ["css=#autoresFilter", "css:finder"],
+        ["xpath=//input[@id='autoresFilter']", "xpath:attributes"],
+        ["xpath=//form[@id='formModalData']/fieldset/div/div/input", "xpath:idRelative"],
+        ["xpath=//fieldset/div/div/input", "xpath:position"]
+      ],
+      "value": "${KEY_ENTER}"
+    }, {
+      "id": "80a3b0ba-5734-44a1-9da6-3bbcdb5e061e",
+      "comment": "",
+      "command": "type",
+      "target": "id=posicionSolicitanteTextId",
+      "targets": [
+        ["id=posicionSolicitanteTextId", "id"],
+        ["name=publicacionIndexada.posAutor", "name"],
+        ["css=#posicionSolicitanteTextId", "css:finder"],
+        ["xpath=//input[@id='posicionSolicitanteTextId']", "xpath:attributes"],
+        ["xpath=//form[@id='formModalData']/fieldset/div[3]/div[2]/input", "xpath:idRelative"],
+        ["xpath=//fieldset/div[3]/div[2]/input", "xpath:position"]
+      ],
+      "value": "3"
+    }, {
+      "id": "74ec518d-8567-404d-bf86-ba2d37e374d8",
+      "comment": "",
+      "command": "type",
+      "target": "css=#claveLabelid + div input",
+      "targets": [
+        ["css=.focus > input", "css:finder"],
+        ["xpath=(//input[@type='text'])[4]", "xpath:attributes"],
+        ["xpath=//form[@id='formModalData']/fieldset[2]/div/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//div/div/div/input", "xpath:position"]
+      ],
+      "value": "Artículo"
+    }, {
+      "id": "b059aa8d-dcd7-4a83-9acb-4880d0e5025a",
+      "comment": "",
+      "command": "sendKeys",
+      "target": "css=#claveLabelid + div input",
+      "targets": [
+        ["css=.focus > input", "css:finder"],
+        ["xpath=(//input[@type='text'])[4]", "xpath:attributes"],
+        ["xpath=//form[@id='formModalData']/fieldset[2]/div/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//div/div/div/input", "xpath:position"]
+      ],
+      "value": "${KEY_ENTER}"
+    }, {
+      "id": "11f1f45a-dec4-4357-ba98-f6b7ea781b7c",
+      "comment": "",
+      "command": "type",
+      "target": "id=tituloTextId",
+      "targets": [],
+      "value": "Hola"
+    }, {
+      "id": "1170bf0d-d6d3-47e2-a71d-45008ba96ec8",
+      "comment": "",
+      "command": "type",
+      "target": "id=nombreRevistaTextId",
+      "targets": [
+        ["id=nombreRevistaTextId", "id"],
+        ["name=publicacionIndexada.nombre", "name"],
+        ["css=#nombreRevistaTextId", "css:finder"],
+        ["xpath=//input[@id='nombreRevistaTextId']", "xpath:attributes"],
+        ["xpath=//form[@id='formModalData']/fieldset[2]/div[4]/div/input", "xpath:idRelative"],
+        ["xpath=//fieldset[2]/div[4]/div/input", "xpath:position"]
+      ],
+      "value": "Expoert"
+    }, {
+      "id": "bdee65a0-1658-4204-93ef-36f06227269e",
+      "comment": "",
+      "command": "type",
+      "target": "id=volumenTextId",
+      "targets": [
+        ["id=volumenTextId", "id"],
+        ["name=publicacionIndexada.volumen", "name"],
+        ["css=#volumenTextId", "css:finder"],
+        ["xpath=//input[@id='volumenTextId']", "xpath:attributes"],
+        ["xpath=//form[@id='formModalData']/fieldset[2]/div[5]/div/input", "xpath:idRelative"],
+        ["xpath=//fieldset[2]/div[5]/div/input", "xpath:position"]
+      ],
+      "value": "161"
+    }, {
+      "id": "db616ee0-9167-4d98-bb48-ddeb25f65bf9",
+      "comment": "",
+      "command": "type",
+      "target": "id=annioPublicacionTextId",
+      "targets": [
+        ["id=annioPublicacionTextId", "id"],
+        ["name=publicacionIndexada.annio", "name"],
+        ["css=#annioPublicacionTextId", "css:finder"],
+        ["xpath=//input[@id='annioPublicacionTextId']", "xpath:attributes"],
+        ["xpath=//form[@id='formModalData']/fieldset[2]/div[9]/div/input", "xpath:idRelative"],
+        ["xpath=//div[9]/div/input", "xpath:position"]
+      ],
+      "value": "2020"
+    }, {
+      "id": "9b933d9b-1c74-4837-a7d3-444e6db9ce69",
+      "comment": "",
+      "command": "click",
+      "target": "id=saveBtn",
+      "targets": [
+        ["id=saveBtn", "id"],
+        ["css=#saveBtn", "css:finder"],
+        ["xpath=//button[@id='saveBtn']", "xpath:attributes"],
+        ["xpath=//div[@id='paraTodoModalContent']/div[3]/div/div/button[2]", "xpath:idRelative"],
+        ["xpath=//button[2]", "xpath:position"],
+        ["xpath=//button[contains(.,'Guardar')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "3e856be0-8812-4e40-832d-0d3e3e9cf9d9",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["4798893f-8b25-4c52-9c99-4fe142d01d37"]
+  }],
+  "urls": ["https://srv.aneca.es/"],
+  "plugins": []
+}

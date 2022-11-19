@@ -1,0 +1,151 @@
+{
+  "id": "918d0d4d-b026-4079-ba5b-9c730eba28e7",
+  "version": "2.0",
+  "name": "https://srv.aneca.es/Academia3/",
+  "url": "https://srv.aneca.es",
+  "tests": [{
+    "id": "d8792163-4845-4f9b-ae78-c8ceab10857b",
+    "name": "inicio",
+    "commands": [{
+      "id": "21c2868a-62ca-4003-8e88-1c9de2b9f651",
+      "comment": "",
+      "command": "open",
+      "target": "/Academia3/signin",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "59f2990a-a6a2-42a7-a68f-4c6d793353a5",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1200x831",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "edc451d9-7342-4667-ac96-dbd9d73b34d0",
+      "comment": "",
+      "command": "click",
+      "target": "css=.textAlignCenter",
+      "targets": [
+        ["css=.textAlignCenter", "css:finder"],
+        ["xpath=//a[@id='urlAccesoSedeId']/h3", "xpath:idRelative"],
+        ["xpath=//h3", "xpath:position"],
+        ["xpath=//h3[contains(.,'https://sede.educacion.gob.es/tramite/login/plogin.jjsp')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "80ab5644-b885-4b6a-bb68-6b67cff6e282",
+      "comment": "",
+      "command": "click",
+      "target": "id=login_texto_entrar",
+      "targets": [
+        ["id=login_texto_entrar", "id"],
+        ["name=login.texto.entrar", "name"],
+        ["css=.clave:nth-child(2) > #tipoIdentificacionForm #login_texto_entrar", "css:finder"],
+        ["xpath=//input[@id='login_texto_entrar']", "xpath:attributes"],
+        ["xpath=//form[@id='tipoIdentificacionForm']/fieldset/input[10]", "xpath:idRelative"],
+        ["xpath=//input[10]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e82a72a0-023c-49a0-b2fb-0e39d491e746",
+      "comment": "",
+      "command": "click",
+      "target": "css=.izq:nth-child(1) .txt_readmore",
+      "targets": [
+        ["css=.izq:nth-child(1) .txt_readmore", "css:finder"],
+        ["xpath=//main[@id='wrap']/div[2]/section/div/ul/li/article/div[2]/div/fieldset/div/a/span", "xpath:idRelative"],
+        ["xpath=//fieldset/div/a/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Access  >')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "562e49f7-399a-4226-948e-f746c4e0e4ac",
+      "comment": "",
+      "command": "click",
+      "target": "id=listaConvocatoriaForm1",
+      "targets": [
+        ["id=listaConvocatoriaForm1", "id"],
+        ["name=listaConvocatoriaForm[1]", "name"],
+        ["css=#listaConvocatoriaForm1", "css:finder"],
+        ["xpath=//input[@id='listaConvocatoriaForm1']", "xpath:attributes"],
+        ["xpath=//form[@id='listaSeleccionarConvocatoria1']/input[14]", "xpath:idRelative"],
+        ["xpath=//div[2]/div/ul/li[2]/form/input[14]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f0ba0f65-1c45-4af5-9f80-d5b29d0a889c",
+      "comment": "",
+      "command": "click",
+      "target": "css=.external-hwndTramite > input:nth-child(4)",
+      "targets": [
+        ["css=.external-hwndTramite > input:nth-child(4)", "css:finder"],
+        ["xpath=//input[@value='Acceso solicitud']", "xpath:attributes"],
+        ["xpath=//div[@id='contenido-aplicacion']/div[8]/div[2]/div/div/ul/li/form/input[4]", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div/ul/li/form/input[4]", "xpath:position"]
+      ],
+      "value": "",
+      "opensWindow": true,
+      "windowHandleName": "win2591",
+      "windowTimeout": 2000
+    }, {
+      "id": "80f3e5b2-ecc3-4117-a45a-7a6285b91ffe",
+      "comment": "",
+      "command": "selectWindow",
+      "target": "handle=${win2591}",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "17125945-c7e1-461d-8453-7dd866b5a05a",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Calidad y difusión de los resultados de la actividad investigadora",
+      "targets": [
+        ["linkText=Calidad y difusión de los resultados de la actividad investigadora", "linkText"],
+        ["css=#sm-16687133905415068-8 > li:nth-child(1) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Calidad y difusión de los resultados de la actividad investigadora')]", "xpath:link"],
+        ["xpath=//ul[@id='sm-16687133905415068-8']/li/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/Academia3/actInvestigadora/calidadDifusion?_HDIV_STATE_=18-4-64350483060A32482F3AEBF3859509E0')]", "xpath:href"],
+        ["xpath=//li[4]/ul/li/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Calidad y difusión de los resultados de la actividad investigadora')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "c9e92ecc-b86b-4427-b0c0-b1311d122428",
+      "comment": "",
+      "command": "click",
+      "target": "id=nuevaPublicacionIdxId",
+      "targets": [
+        ["id=nuevaPublicacionIdxId", "id"],
+        ["linkText=Nuevo", "linkText"],
+        ["css=#nuevaPublicacionIdxId", "css:finder"],
+        ["xpath=//a[@id='nuevaPublicacionIdxId']", "xpath:attributes"],
+        ["xpath=//form[@id='formCalidadDifusionId']/div/div[2]/div/div/ul/li/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/Academia3/actInvestigadora/calidadDifusion/nuevaPublicacionIndexada?_HDIV_STATE_=19-23-AD57F7F12A035594F5CC71D2D29382E8')]", "xpath:href"],
+        ["xpath=//div/div/ul/li/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ee659d8d-5e2c-4808-ac85-56953774fe10",
+      "comment": "",
+      "command": "click",
+      "target": "css=.close > span:nth-child(1)",
+      "targets": [
+        ["css=.close > span:nth-child(1)", "css:finder"],
+        ["xpath=//div[@id='paraTodoModalContent']/div/button/span", "xpath:idRelative"],
+        ["xpath=//div/div/button/span", "xpath:position"],
+        ["xpath=//span[contains(.,'X')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "5632bc1d-0c3b-48cd-a7a7-a5871663de69",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["d8792163-4845-4f9b-ae78-c8ceab10857b"]
+  }],
+  "urls": ["https://srv.aneca.es/"],
+  "plugins": []
+}
