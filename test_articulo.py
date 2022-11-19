@@ -51,10 +51,10 @@ class TestArticulo():
     self.driver.find_element(By.CSS_SELECTOR, "#claveLabelid + div input").send_keys(Keys.ENTER)
     time.sleep(1)
     # 15 | type | id=tituloTextId | Hola
-    self.driver.find_element(By.ID, "tituloTextId").send_keys(record['title'])
+    self.driver.find_element(By.ID, "tituloTextId").send_keys(record['plain_title'])
     #time.sleep(1)
     # 16 | type | id=nombreRevistaTextId | Expoert
-    self.driver.find_element(By.ID, "nombreRevistaTextId").send_keys(record['journal'])
+    self.driver.find_element(By.ID, "nombreRevistaTextId").send_keys(record['plain_journal'])
     #time.sleep(1)
     # 17 | type | id=volumenTextId | 161
     self.driver.find_element(By.ID, "volumenTextId").send_keys(record['volume'])
