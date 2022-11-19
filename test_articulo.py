@@ -43,6 +43,15 @@ class Articulo():
       return record[field]
     return ''
   
+  def insertAuthor(self, author):
+    if ',' in author:
+      l=[e.strip() for e in author.split(',')]
+      l.reverse()
+      author = " ".join(l)
+    # 6 | type | id=autoresFilter | Francisco Chicano
+    self.driver.find_element(By.ID, "autoresFilter").send_keys(author)
+    # 7 | sendKeys | id=autoresFilter | ${KEY_ENTER}
+    self.driver.find_element(By.ID, "autoresFilter").send_keys(Keys.ENTER)
 
   def establece_campos_opcionales(self, record):
     self.driver.find_element(By.ID, "doiTextId").send_keys(self.getOptionalField(record,'doi'))
@@ -57,15 +66,15 @@ class Articulo():
     self.driver.find_element(By.ID, "posRevistaMaxTextId").send_keys(self.getOptionalField(record,'maxincat'))
     self.driver.find_element(By.ID, "categoriaTextId").send_keys(self.getOptionalField(record,'category'))
     self.driver.find_element(By.ID, "annioCalidadTextId").send_keys(self.getOptionalField(record,'yearmetrics'))
+    self.driver.find_element(By.ID, "indiceImpactoTextId").send_keys(self.getOptionalField(record,'impactfactor'))
     self.driver.find_element(By.ID, "citasJcrTextId").send_keys(self.getOptionalField(record,'jcrcites'))
     self.driver.find_element(By.ID, "citasTotalTextId").send_keys(self.getOptionalField(record,'totalcites'))
     self.driver.find_element(By.ID, "otrosIndiciosTextAreaId").send_keys(self.getOptionalField(record,'qualityevidences'))
+    
+    
 
     tercile=self.getOptionalField(record,'tercile')
-    if tercile.startswith('T'):
-      tercile = tercile[1:]
-      
-    if tercile in ['1', '2', '3']:
+    if tercile in ['T1', 'T2', 'T3']:
       self.driver.find_element(By.CSS_SELECTOR, "#tercilLabelId + div input").send_keys(tercile)
       time.sleep(0.5)
       self.driver.find_element(By.CSS_SELECTOR, "#tercilLabelId + div input").send_keys(Keys.ENTER)
@@ -77,7 +86,7 @@ class Articulo():
 
     if quartile in ['1', '2', '3', '4']:
       dropdown = self.driver.find_element(By.CSS_SELECTOR, "#cuartilComboId")    
-      dropdown.find_element(By.XPATH, f'//option[. = "{self.getOptionalField(record,'quartile')}"]').click()
+      dropdown.find_element(By.XPATH, f'//option[. = "{quartile}"]').click()
 
 
 
@@ -91,10 +100,7 @@ class Articulo():
     WebDriverWait(self.driver, 60).until(expected_conditions.presence_of_element_located((By.CSS_SELECTOR, "#autoresFilter")))
     time.sleep(1)
     for author in record['author']:
-      # 6 | type | id=autoresFilter | Chrisitan
-      self.driver.find_element(By.ID, "autoresFilter").send_keys(author)
-      # 7 | sendKeys | id=autoresFilter | ${KEY_ENTER}
-      self.driver.find_element(By.ID, "autoresFilter").send_keys(Keys.ENTER)
+      self.insertAuthor(author)
 
 
     self.driver.find_element(By.ID, "posicionSolicitanteTextId").send_keys(str(pos))
