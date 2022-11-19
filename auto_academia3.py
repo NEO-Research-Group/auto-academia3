@@ -2,7 +2,7 @@ import bibtexparser
 from bibtexparser.bparser import BibTexParser
 from bibtexparser.customization import *
 import sys
-from test_articulo import TestArticulo
+from test_articulo import Articulo
 
 def customizations(record):
     """Use some functions delivered by the library
@@ -35,8 +35,8 @@ if __name__ == "__main__":
         bib_database = bibtexparser.load(bibtex_file, parser=parser)
 
 
-        #browser = TestArticulo()
-        #browser.setup_method(None)
+        browser = Articulo()
+        browser.setup_method(None)
 
 
         for entry in bib_database.entries:
@@ -52,9 +52,9 @@ if __name__ == "__main__":
                 print(f'Revista: {entry["plain_journal"]}')
                 print(f'Volumen: {entry["volume"]}')
                 print(f'Año: {entry["year"]}')
-                #browser.test_articulo(entry, pos)
+                browser.aniade_articulo(entry, pos)
                 #print(entry)
 
 
-        #browser.teardown_method(None)
+        browser.teardown_method(None)
 

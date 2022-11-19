@@ -10,7 +10,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
-class TestArticulo():
+class Articulo():
   def setup_method(self, method):
     self.driver = webdriver.Chrome()
     self.vars = {}
@@ -25,8 +25,25 @@ class TestArticulo():
   
   def teardown_method(self, method):
     self.driver.quit()
+
+  def getPagDesde(self, record):
+    if 'pages' in record:
+      return record['pages'].split('--')[0]
+    return ''
+
+  def getPagHasta(self, record):
+    if 'pages' in record:
+      pages = record['pages'].split('--')
+      if len(pages) > 1:
+        return pages[1]
+    return ''
+
+  def getOptionalField(self, record, field):
+    if field in record:
+      return record[field]
+    return ''
   
-  def test_articulo(self, record, pos):
+  def aniade_articulo(self, record, pos):
     # 4 | waitForElementPresent | css=#nuevaPublicacionIdxId | 30000
     WebDriverWait(self.driver, 60).until(expected_conditions.presence_of_element_located((By.CSS_SELECTOR, "#nuevaPublicacionIdxId")))
     time.sleep(1)
@@ -52,6 +69,11 @@ class TestArticulo():
     time.sleep(1)
     # 15 | type | id=tituloTextId | Hola
     self.driver.find_element(By.ID, "tituloTextId").send_keys(record['plain_title'])
+    self.driver.find_element(By.ID, "doiTextId").send_keys(self.getOptionalField(record,'doi'))
+    self.driver.find_element(By.ID, "pagDesdeTextId").send_keys(self.getPagDesde(record))
+    self.driver.find_element(By.ID, "pagHastaTextId").send_keys(self.getPagHasta(record))
+    self.driver.find_element(By.ID, "editorialTextId").send_keys(self.getOptionalField(record,'publisher'))
+    self.driver.find_element(By.ID, "issnTextId").send_keys(self.getOptionalField(record,'issn'))
     #time.sleep(1)
     # 16 | type | id=nombreRevistaTextId | Expoert
     self.driver.find_element(By.ID, "nombreRevistaTextId").send_keys(record['plain_journal'])
