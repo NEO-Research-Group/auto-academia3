@@ -2,7 +2,7 @@ import bibtexparser
 from bibtexparser.bparser import BibTexParser
 from bibtexparser.customization import *
 import sys
-from test_articulo import Articulo
+from test_articulo import Articulo, Congreso
 
 def customizations(record):
     """Use some functions delivered by the library
@@ -16,6 +16,7 @@ def customizations(record):
 
     record = type(record)
     record = author(record)
+    record = convert_to_unicode(record)
     record = add_plaintext_fields(record)
     record = editor(record)
     record = keyword(record)
@@ -26,9 +27,8 @@ def customizations(record):
 
     return record
 
-
-if __name__ == "__main__":
-    with open(sys.argv[1]) as bibtex_file:
+def articulos(argv):
+    with open(argv[0]) as bibtex_file:
         parser = BibTexParser()
         parser.add_missing_from_crossref = True
         parser.customization = customizations
@@ -46,7 +46,7 @@ if __name__ == "__main__":
                 pos = 0
                 for count, author in enumerate(entry['author']):
                     print(f'\t{author}')
-                    if author.startswith('Chicano'):
+                    if author.startswith(argv[1]):
                         pos = count+1
                 print(f'Posición: {pos}')
                 print(f'Revista: {entry["plain_journal"]}')
@@ -58,3 +58,41 @@ if __name__ == "__main__":
 
         browser.teardown_method(None)
 
+def congresos(argv):
+    with open(argv[0]) as bibtex_file:
+        parser = BibTexParser()
+        parser.add_missing_from_crossref = True
+        parser.customization = customizations
+        bib_database = bibtexparser.load(bibtex_file, parser=parser)
+
+
+        browser = Congreso()
+        browser.setup_method(None)
+
+
+        for entry in bib_database.entries:
+            if (entry['ENTRYTYPE'] == 'inproceedings'):
+                print(f'Título: {entry["plain_title"]}')
+                print('Autores:')
+                pos = 0
+                for count, author in enumerate(entry['author']):
+                    print(f'\t{author}')
+                    if author.startswith(argv[1]):
+                        pos = count+1
+                print(f'Posición: {pos}')
+                print(f'Congreso: {entry["plain_booktitle"]}')
+                print(f'Año: {entry["year"]}')
+                browser.aniade_congreso(entry, pos)
+                #print(entry)
+
+
+        browser.teardown_method(None)
+
+
+
+
+if __name__ == "__main__":
+    if (sys.argv[1] == 'revistas'):
+        articulos(sys.argv[2:])
+    elif (sys.argv[1] == 'congresos'):
+        congresos(sys.argv[2:])

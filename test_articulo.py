@@ -128,3 +128,92 @@ class Articulo():
     self.driver.find_element(By.ID, "saveBtn").click()
     time.sleep(3)
   
+class Congreso():
+  def setup_method(self, method):
+    self.driver = webdriver.Chrome()
+    self.vars = {}
+    # Test name: articulo
+    # Step # | name | target | value
+    # 1 | open | /Academia3/solicitudes | 
+    self.driver.get("https://srv.aneca.es/Academia3/solicitudes")
+    # 2 | setWindowSize | 1200x831 | 
+    self.driver.set_window_size(1200, 831)
+    # 4 | waitForElementPresent | css=#nuevaPublicacionIdxId | 30000
+    WebDriverWait(self.driver, 60).until(expected_conditions.presence_of_element_located((By.CSS_SELECTOR, "#nuevoCongreso")))
+  
+  def teardown_method(self, method):
+    self.driver.quit()
+
+  def getPagDesde(self, record):
+    if 'pages' in record:
+      return record['pages'].split('--')[0]
+    return ''
+
+  def getPagHasta(self, record):
+    if 'pages' in record:
+      pages = record['pages'].split('--')
+      if len(pages) > 1:
+        return pages[1]
+    return ''
+
+  def getFechaDesde(self, record):
+    if 'date' in record:
+      return record['date'].split('--')[0]
+    return ''
+
+  def getFechaHasta(self, record):
+    if 'date' in record:
+      dates = record['date'].split('--')
+      if len(dates) > 1:
+        return dates[1]
+    return ''
+
+  def getOptionalField(self, record, field):
+    if field in record:
+      return record[field]
+    return ''
+  
+  def insertAuthor(self, author):
+    if ',' in author:
+      l=[e.strip() for e in author.split(',')]
+      l.reverse()
+      author = " ".join(l)
+    # 6 | type | id=autoresFilter | Francisco Chicano
+    self.driver.find_element(By.ID, "autoresFilter").send_keys(author)
+    # 7 | sendKeys | id=autoresFilter | ${KEY_ENTER}
+    self.driver.find_element(By.ID, "autoresFilter").send_keys(Keys.ENTER)
+
+  def aniade_congreso(self, record, pos):
+    # 4 | waitForElementPresent | css=#nuevaPublicacionIdxId | 30000
+    WebDriverWait(self.driver, 60).until(expected_conditions.presence_of_element_located((By.CSS_SELECTOR, "#nuevoCongreso")))
+    time.sleep(1)
+    # 5 | click | css=#nuevaPublicacionIdxId > label | 
+    self.driver.find_element(By.CSS_SELECTOR, "#nuevoCongreso > label").click()
+
+    WebDriverWait(self.driver, 60).until(expected_conditions.presence_of_element_located((By.CSS_SELECTOR, "#autoresFilter")))
+    time.sleep(1)
+    for author in record['plain_author']:
+      self.insertAuthor(author)
+
+    self.driver.find_element(By.CSS_SELECTOR, "#tipoParticipacionLabelId + div input").send_keys("Ponencia")
+    time.sleep(0.5)
+    self.driver.find_element(By.CSS_SELECTOR, "#tipoParticipacionLabelId + div input").send_keys(Keys.ENTER)
+    time.sleep(0.5)
+    self.driver.find_element(By.ID, "tituloTextId").send_keys(record['plain_title'])
+    #time.sleep(1)
+    self.driver.find_element(By.ID, "denominacionTextId").send_keys(record['plain_booktitle'])
+    self.driver.find_element(By.ID, "entidadOrganizadoraTextId").send_keys(record['plain_organization'])
+    self.driver.find_element(By.ID, "lugarTextId").send_keys(record['plain_place'])
+
+    self.driver.find_element(By.ID, "fDesdeTextId").send_keys(self.getFechaDesde(record))
+    self.driver.find_element(By.ID, "fHastaTextId").send_keys(self.getFechaHasta(record))
+    # Campos opcionales
+    self.driver.find_element(By.ID, "tituloPubliTextId").send_keys(self.getOptionalField(record,'series'))
+    self.driver.find_element(By.ID, "issnisbnTextId").send_keys(self.getOptionalField(record,'isbn'))
+    self.driver.find_element(By.ID, "volumenTextId").send_keys(self.getOptionalField(record,'volume'))
+    self.driver.find_element(By.ID, "pagDesdeTextId").send_keys(self.getPagDesde(record))
+    self.driver.find_element(By.ID, "pagHastaTextId").send_keys(self.getPagHasta(record))
+    
+    self.driver.find_element(By.ID, "saveBtn").click()
+    time.sleep(3)
+  
