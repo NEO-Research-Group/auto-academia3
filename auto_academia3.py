@@ -2,7 +2,7 @@ import bibtexparser
 from bibtexparser.bparser import BibTexParser
 from bibtexparser.customization import *
 import sys
-from test_articulo import Articulo, Congreso
+from test_articulo import Articulo, Congreso, Tfe
 
 def customizations(record):
     """Use some functions delivered by the library
@@ -89,10 +89,21 @@ def congresos(argv):
         browser.teardown_method(None)
 
 
-
+def tfes(argv):
+    import csv
+    with open(argv[0],'r',encoding='utf-8-sig') as csv_file:
+        reader = csv.DictReader(csv_file, delimiter=';')
+        browser = Tfe()
+        browser.setup_method(None)
+        for entry in reader:
+            print(f'TFE: {entry["Title"]}')
+            browser.aniade_tfe(entry)
+        browser.teardown_method(None)
 
 if __name__ == "__main__":
     if (sys.argv[1] == 'revistas'):
         articulos(sys.argv[2:])
     elif (sys.argv[1] == 'congresos'):
         congresos(sys.argv[2:])
+    elif (sys.argv[1] == 'tfes'):
+        tfes(sys.argv[2:])

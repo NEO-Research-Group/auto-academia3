@@ -216,4 +216,46 @@ class Congreso():
     
     self.driver.find_element(By.ID, "saveBtn").click()
     time.sleep(3)
-  
+
+
+class Tfe():
+  def setup_method(self, method):
+    self.driver = webdriver.Chrome()
+    self.vars = {}
+    self.driver.get("https://srv.aneca.es/Academia3/solicitudes")
+    self.driver.set_window_size(1200, 831)
+    # 4 | waitForElementPresent | css=#nuevaPublicacionIdxId | 30000
+    WebDriverWait(self.driver, 60).until(
+      expected_conditions.presence_of_element_located((By.CSS_SELECTOR, "#nuevoTrabajoAvanzadoId")))
+
+  def teardown_method(self, method):
+    self.driver.quit()
+
+  def getOptionalField(self, record, field):
+    if field in record:
+      return record[field]
+    return ''
+
+  def aniade_tfe(self, record):
+    WebDriverWait(self.driver, 60).until(
+      expected_conditions.presence_of_element_located((By.CSS_SELECTOR, "#nuevoTrabajoAvanzadoId")))
+    time.sleep(1)
+    self.driver.find_element(By.CSS_SELECTOR, "#nuevoTrabajoAvanzadoId > label").click()
+
+    WebDriverWait(self.driver, 60).until(
+      expected_conditions.presence_of_element_located((By.CSS_SELECTOR, "#tituloTextId")))
+    time.sleep(1)
+    self.driver.find_element(By.ID, "tituloTextId").send_keys(record['Title'])
+    self.driver.find_element(By.CSS_SELECTOR, "#universidadLabelId + div input").send_keys(record['University'])
+    time.sleep(0.5)
+    self.driver.find_element(By.CSS_SELECTOR, "#universidadLabelId + div input").send_keys(Keys.ENTER)
+    time.sleep(0.5)
+    self.driver.find_element(By.ID, "annioTrabajoAvanzadoTextId").send_keys(record['Year'])
+    self.driver.find_element(By.ID, "calificacionTextId").send_keys(record['Grade'])
+
+    # Campos opcionales
+    self.driver.find_element(By.ID, "premiosYMencionesTextAreaId").send_keys(self.getOptionalField(record,'Awards'))
+    self.driver.find_element(By.ID, "codirectoresTextId").send_keys(self.getOptionalField(record, 'Advisor'))
+
+    self.driver.find_element(By.ID, "saveBtn").click()
+    time.sleep(3)
